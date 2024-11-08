@@ -15,14 +15,15 @@
             <br>
             <br>
     
-            <label for="password">Enter Password</label>
-            <input type="text" id="password">
+            <label for="password" >Enter Password</label>
+            <input type="password" id="password"placeholder="AbcXyz">
             <br>
             <br>
     
             <input type="submit" value="Click Here">
+        </fieldset>
     </form>
-        <br><br>
+    <br><br>
     
     <form >
             <label for="datepicker">Pick Date</label>
@@ -36,12 +37,46 @@
                 <option value="Chips">Chips</option>
             </select>
             <br><br>
+
+            <label for="multi">Select Multipe Options from Dropdown</label>
+            <br>
+            <select name="multiple" id="multi" multiple>
+                <option value="maths">Maths</option>
+                <option value="science">Science</option>
+                <option value="english">English</option>
+                <option value="hindi">Hindi</option>
+                <option value="computer">Computer</option>
+            </select>
+            <br>
+            <label for="multi">Use ctrl to select multiple elements</label>
+            <br></br>
     
             <textarea name="textArea1" id="textArea1" placeholder="Enter text.." cols="30" rows="10"></textarea>
             <br><br>
     
             <button>Battan</button>
-        </fieldset>
+            <br><br>
+
+
+            <input type="radio" name="gen" id="male">
+            <label for="male">Male</label>
+            <input type="radio" name="gen" id="female">
+            <label for="female">Female</label>
+            <br><br>
+            
+            <label for="geo">Geography</label>
+            <input type="checkbox" name="sub" id="geo">
+            <label for="his">History</label>
+            <input type="checkbox" name="sub" id="his">
+            <br><br>
+
+
+            <label for="file">Select File</label>
+            <input type="file" name="file1" id="file">
+            <br><br>
+
+            <input type="image" name="img" id="imgBtn" alt="Click Here" src="res/down.png" width="100px">
+
         
     </form>
 </body>
