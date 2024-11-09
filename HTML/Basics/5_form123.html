@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form One</title>
+</head>
+<body>
+    <h2>Event Registration</h2>
+    <form>
+        <label for="name">Name:</label>
+        <br>
+        <input type="text" name="name" id="name">
+        <br><br>
+
+        <label for="email">Email:</label>
+        <br>
+        <input type="email" name="email" id="email">
+        <br><br>
+
+        <label for="no">Number:</label>
+        <br>
+        <!-- <input type="tel" name="number" id="no" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"> -->
+        <input type="tel" name="number" id="no" pattern="\+91-[0-9]{10}">
+        <br><br>
+
+        <label for="occupy">Occupation</label>
+        <br>
+        <select name="occupy" id="occupy">
+            <option value="stdnt">Student</option>
+            <option value="pro">Professional</option>
+            <option value="oth">Other</option>
+        </select>
+        <br><br>
+
+        <label for="intrst">Interest:</label>
+        <br>
+        <input type="checkbox" name="intrst" id="html">
+        <label for="html">HTML</label>
+        <br>
+
+        <input type="checkbox" name="intrst" id="CSS">
+        <label for="CSS">CSS</label>
+        <br>
+
+        <input type="checkbox" name="intrst" id="js">
+        <label for="js">JavaScript</label>
+        <br><br>
+
+        <label for="cmt">Comment:</label>
+        <br>
+        <textarea name="txt" id="cmt" rows="3" cols="50"></textarea>
+        <br>
+        
+        <input type="submit" name="button" id="btn" value="Register">
+    </form>
+
+    <br><br><br><br><br>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Two</title>
+</head>
+<body>
+    <h2>Job Application</h2>
+    <form>
+        <label for="name2">Name:</label>
+        <br>
+        <input type="text" name="name" id="name2">
+        <br><br>
+
+        <label for="email2">Email:</label>
+        <br>
+        <input type="email" name="email" id="email2">
+        <br><br>
+
+        <label for="ph2">Phone:</label>
+        <br>
+        <input type="tel" name="phone" id="ph2" pattern="\+91-[0-9]{10}">
+        <br><br>
+
+        <label for="res">Resume:</label>
+        <br>
+        <input type="file" name="" id="res">
+        <br><br>
+
+        <label for="exp2">Experience:</label>
+        <br>
+        <input type="number" name="exp" id="exp2" min="0" max="30">
+        <br><br>
+
+        <fieldset>
+            <legend>Skills:</legend>
+
+            <input type="checkbox" name="skill" id="html">
+            <label for="html">HTML</label>
+            <br>
+
+            <input type="checkbox" name="skill" id="css2">
+            <label for="css2">CSS</label>
+            <br>
+
+            <input type="checkbox" name="skill" id="js2">
+            <label for="js2">JavaScript</label>
+            <br>
+        </fieldset>
+        <br><br>
+
+        <label for="edu2">Highest Education:</label>
+        <br>
+        <select name="edu" id="edu2">
+            <option value="pg">Post Graduate</option>
+            <option value="g">Graduate</option>
+            <option value="i">Intermediate</option>
+            <option value="hs">Highschool</option>
+        </select>
+        <br><br>
+
+        <label for="avil">Availability:</label>
+        <br>
+        <input type="radio" name="avil" id="ft2">
+        <label for="ft2">Full Time</label>
+        <br>
+        <input type="radio" name="avil" id="pt2">
+        <label for="pt2">Part Time</label>
+        <br><br>
+
+        <label for="ac">Additional Comments:</label>
+        <br>
+        <textarea name="acc" id="ac" rows="4" cols="50"></textarea>
+        <br><br>
+
+        <input type="submit" name="" id="" value="Apply">
+        <br><br><br><br><br>
+    </form>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Three</title>
+</head>
+<body>
+
+    <h2>Complex Form</h2>
+    <form>
+        <fieldset>
+            <legend>Personal Information</legend>
+
+            <label for="name3">Name:</label>
+            <input type="text" name="" id="name3">
+
+            <label for="email3">Email:</label>
+            <input type="email" name="" id="email3">
+
+            <label for="ph3">Phone:</label>
+            <input type="tel" name="" id="ph3">
+
+            <label for="dob3">Date of Birth:</label>
+            <input type="date" name="" id="dob3">
+
+            <label for="gen3">Gender</label>
+            <input type="radio" name="gen" id="m3">
+            <label for="m3">Male</label>
+            <input type="radio" name="gen" id="f3">
+            <label for="f3">Female</label>
+
+            <label for="country3">Country</label>
+            <select name="country" id="country3">
+                <option value="i">India</option>
+                <option value="us">United States</option>
+                <option value="uk">United Kingdom</option>
+                <option value="f">France</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend>
+                Address
+                <label for="st3">Street</label>
+                <input type="text" name="" id="st3">
+                <label for="ct3">City</label>
+                <input type="text" name="" id="ct3">
+                <label for="st3">State</label>
+                <input type="text" name="" id="st3">
+                <label for="zip3">Zip Code</label>
+                <input type="number" name="" id="zip3">
+            </legend>
+        </fieldset>
+    </form>
+</body>
+</html>
