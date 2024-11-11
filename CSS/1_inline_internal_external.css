@@ -1,0 +1,24 @@
+h1{
+    font-size: smaller;
+    text-align: center;
+}
+
+p{
+    background-color: blueviolet;
+}
+
+#abc{
+    background-color: green;
+}
+
+.paraClass{
+    color: red;
+}
+
+p,article{
+    width: 500px;
+}
+
+p.paraClass{
+    text-align: center;
+}
