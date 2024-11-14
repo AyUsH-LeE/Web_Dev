@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sizes</title>
+
+    <style>
+        .box{
+            border: 2px solid red;
+            width: 50%;
+        }
+
+        .parent{
+            border: 1px solid black;
+            width: 50%;
+        }
+
+        .child{
+            border: 1px solid green;
+            background-color: aqua;
+            width: 50%;
+        }
+
+        /* viewport = visible screen on website */
+        /* vh = viewport height */
+        /* vw = viewport width */
+        .container{
+            border: 1px solid green;
+            background-color: beige;
+            height: 100vh;
+            width: 50vw;
+        }
+
+        .box1{
+            border: 1px solid black;
+            font-size: 100px;
+        }
+
+        /* 1em = size of the parent */
+        .container1{
+            font-size: 10em;
+        }
+
+        /* 1rem = size of root(html, def: 16px) element */
+        .firstpara{
+            border: 1p solid black;
+            font-size: 5rem;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="box">
+        Namaste World!!
+    </div>
+
+    <div class="parent">
+        <div class="child">
+            child
+        </div>
+    </div>
+
+    <div class="container">
+
+    </div>
+
+    <div class="box1">
+        Ayush Misra
+    </div>
+
+    <div class="container1">
+        hello world
+    </div>
+
+    <p class="firstpara">
+        hello again
+    </p>
+</body>
+</html>
