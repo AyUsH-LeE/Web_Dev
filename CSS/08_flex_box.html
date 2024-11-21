@@ -20,8 +20,8 @@
             /* flex-direction: row; */
 
 
-            flex-wrap: wrap;
-            /* flex-wrap: nowrap; */
+            /* flex-wrap: wrap; */
+            flex-wrap: nowrap;
             /* flex-wrap: wrap-reverse; */
 
             
@@ -58,16 +58,24 @@
         #box1{
             background-color: aqua;
             order: 10;
+            flex-shrink: 4;
+            /* flex-grow: 1; */
         }
         #box2{
             background-color: blue;
+            /* flex-grow: 2; */
+            align-self: center;
         }
         #box3{
             background-color: orange;
             order: 20;
+            /* flex-grow: 3; */
+            align-self: end;
         }
         #box4{
             background-color: brown;
+            /* flex-grow: 4; */
+            flex-basis: 400px;
         }
     </style>
 </head>
