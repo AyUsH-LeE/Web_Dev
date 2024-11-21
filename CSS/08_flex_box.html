@@ -8,6 +8,7 @@
         
         
         .container{
+            height: 500px;
             background-color: beige;
             border: 5px solid black;
             margin: 2px;
@@ -19,13 +20,31 @@
             /* flex-direction: row; */
 
 
-            /* flex-wrap: wrap; */
+            flex-wrap: wrap;
             /* flex-wrap: nowrap; */
             /* flex-wrap: wrap-reverse; */
 
             
-            /* flex-flow: The flex-flow property is a shorthand property for flex-direction flex-wrap */
-            flex-flow: row-reverse wrap-reverse;
+            /* shorthand property for flex-direction flex-wrap */
+            /* flex-flow: row-reverse wrap-reverse; */
+
+
+            /* justify-content: center; */
+            justify-content: start;
+            /* justify-content: end; */
+            /* justify-content: space-between; */
+            /* justify-content: space-around; */
+            /* justify-content: space-evenly; */
+
+
+            /* align-items: center; */
+            align-items: start;
+            /* align-items: end; */
+            /* align-items: stretch; */
+
+            /* prevents space betweenthe ojects */
+            /* align-content: start; */
+            align-content: center;
         }
 
 
@@ -38,12 +57,14 @@
         }
         #box1{
             background-color: aqua;
+            order: 10;
         }
         #box2{
             background-color: blue;
         }
         #box3{
             background-color: orange;
+            order: 20;
         }
         #box4{
             background-color: brown;
@@ -52,10 +73,10 @@
 </head>
 <body>
     <div class="container">
-        <div class="box" id="box1"></div>
-        <div class="box" id="box2"></div>
-        <div class="box" id="box3"></div>
-        <div class="box" id="box4"></div>
+        <div class="box" id="box1">Box 1</div>
+        <div class="box" id="box2">Box 2</div>
+        <div class="box" id="box3">Box 3</div>
+        <div class="box" id="box4">Box 4</div>
     </div>
 </body>
 </html>
