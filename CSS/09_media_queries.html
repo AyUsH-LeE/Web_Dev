@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Queries</title>
+    <style>
+        /* .box{
+            background-color: aqua;
+            height: 400px;
+            width: 400px;
+            border: 3px solid black;
+        }
+        @media (min-width:300px) and (max-width: 500px){
+            .box{
+                background-color: green;
+            }
+        } */
+
+        /* .container{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+
+        .box{
+            height: 200px;
+            width: 200px;
+            margin: 2px;
+            padding: 2px;
+            border: 2px  solid black;
+            background-color: aqua;
+        }
+
+        @media (min-width: 650px){
+            .container{
+                flex-direction: row;
+            }
+        } */
+
+
+        @media (max-width: 640px){
+            .container{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            }
+            .box{
+                height: 200px;
+                width: 200px;
+                margin: 2px;
+                padding: 2px;
+                border: 2px  solid black;
+                background-color: aqua;
+            }
+        }
+
+        @media (min-width: 640px){
+            .container{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            }
+            .box{
+                height: 200px;
+                width: 200px;
+                margin: 2px;
+                padding: 2px;
+                border: 2px  solid black;
+                background-color: aqua;
+            }
+        }
+
+        
+
+    </style>
+</head>
+<body>
+    <!-- <div class="box">
+        Namaste World!!
+    </div> -->
+
+    <div class="container">
+        <!-- <div class="box">Box 1</div>
+        <div class="box">Box 2</div>
+        <div class="box">Box 3</div>
+        <div class="box">Box 4</div> -->
+
+
+        <div class="box">
+            <input type="text" name="" id="txt1">
+            <br>
+            <input type="text" name="" id="txt2">
+        </div>
+        <div class="box">
+            <img src="res/img1.jpeg" alt="" width="200px">
+        </div>
+    </div>
+</body>
+</html>
