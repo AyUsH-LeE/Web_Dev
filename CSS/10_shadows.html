@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadows</title>
+    <style>
+        .container{
+            background-color: beige;
+            height: 650px;
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box{
+            background-color: aquamarine;
+            width: 330px;
+            height: 330px;
+            border: 1px solid brown;
+            margin: 5px;
+            padding: 5px;
+
+            /* A color and two length values */
+            /* <length> | <length> | <color>*/
+            box-shadow: 10px -15px brown;
+
+            /* Three length values and a color */
+            /* <x-length> | <y-length> | <blur-radius> | <color> */
+            box-shadow: 10px 5px 15px black;
+
+            /* Four length values and a color */
+            /* <x-length> | <-ylength> | <blur-radius> | <shadow-spread> | <color> */
+            box-shadow: 2px 2px 5px 10px rgb(0 0 0 / 20%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <img src="res/img1.jpeg" alt="" width="200px">
+            <h2>Hello World</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime vero odit repudiandae quam iure accusantium facere nostrum? Inventore nulla debitis perspiciatis? Quod amet voluptatem fuga.</p>
+        </div>
+    </div>
+</body>
+</html>
