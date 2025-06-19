@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Static Navbar</title>
+    <style>
+        .body{
+            background-color: #333;
+            color: #f0f0f0;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0px;
+            padding: 20px;
+        }
+
+        .nav1{
+            background-color: #333;
+            padding: 10px;
+        }
+        .nav1 ul{
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+            display: flex;
+            justify-content: right;
+        }
+        .nav1 div{
+            margin: 5px;
+        }
+        .nav li{
+            display: inline;
+        }
+        .nav1 a{
+            text-decoration: none;
+            color: #f0f0f0;
+            position: relative;
+        }
+        .nav1 a::after {
+            content: "";
+            position: absolute;
+            height: 1px;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            background-color: #f0f0f0;
+            transform: scaleX(0);
+            transition: transform 0.2s ease-in-out;
+        }
+        .nav1 a:hover::after {
+            transform: scaleX(1);
+            height: 2px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        <h2>Basic Static Navbar</h2>
+        <nav class="nav1">
+            <ul>
+                <li>
+                    <div>
+                        <a href="#">Home</a>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href="#">About</a>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href="#">Contact</a>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href="#">Services</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>

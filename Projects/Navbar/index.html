@@ -92,6 +92,33 @@
             padding: 10px;
             cursor: pointer;
         }
+        .nav3{
+            background-color: #45a2bb;
+            padding: 10px;
+        }
+        .nav3 ul{
+            list-style: none;
+            padding: 0px;
+            margin: 0px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .nav3 a{
+            text-decoration: none;
+            color: #fff;
+            padding: 10px;
+            display: block;
+        }
+        .nav3 .dropdown-content{
+            display: none;
+        }
+        .nav3 .dropdown:hover .dropdown-content{
+            display: block;
+            position: absolute;
+            background-color: #45a2bb;
+
+        }
     </style>
 </head>
 <body>
@@ -107,7 +134,7 @@
         </nav>
     </div>
 
-        <div class="nav-container">
+    <div class="nav-container">
         <h2>Variation 2: Vertical with hover effect</h2>
         <nav class="nav2">
             <ul>
@@ -124,7 +151,14 @@
         <nav class="nav3">
             <ul>
                 <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
+                <li class="dropdown">
+                    <a href="#">About</a>
+                    <div class="dropdown-content">
+                        <a href="#">Our Story</a>
+                        <a href="#">Team</a>
+                        <a href="#">Contact</a>
+                    </div>
+                </li>
                 <a href="#">Our Story</a>
                 <a href="#">Team</a>
                 <a href="#">Contact</a>
