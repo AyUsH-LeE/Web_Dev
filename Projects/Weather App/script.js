@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function(){
     const cityName = document.getElementById('city-name');
     const temperature = document.getElementById('temperature');
     const description = document.getElementById('description');
+    const windSpeed = document.getElementById('wind-speed');
     const errorMessage = document.getElementById('error-message');
 
     // API_KEY = "a8debf093da04d20ac1144440252009";    // weatherapi.com
@@ -44,35 +45,19 @@ document.addEventListener("DOMContentLoaded", function(){
         return data;
     };
 
-//     async function fetchWeatherData(city) {
-//     // const URL = `http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city}`;
-//     const url = `https: //api. openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`;
-
-
-//     try {
-//         const response = await fetch(URL); // await the fetch
-//         if (!response.ok) {
-//             throw new Error('Network response was not ok');
-//         }
-//         const data = await response.json(); // parse JSON
-//         console.log(data);
-//         //  data; // return the data
-//     } catch (error) {
-//         console.error("Fetch error:", error);
-//         throw error; // let the caller handle it
-//     }
-// }
-
-
     function displayWeathedData(data){
         //displays data
         console.log(data);
-        const {name, main, weather} = data;
+        const {name, main, weather, wind} = data;
         cityName.textContent = name
+        temperature.textContent = `Temperature: ${main.temp}`;
+        description.textContent = `Weather: ${weather[0].description}`;
+        windSpeed.textContent = `Wind-Speed: ${wind.speed} km/h`;
 
         // unlock the display
         weatherInfo.classList.remove('hidden');
         errorMessage.classList.add('hidden');
+        
     };
 
     function showError(){
