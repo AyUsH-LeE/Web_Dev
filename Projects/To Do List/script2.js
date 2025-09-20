@@ -1,102 +1,85 @@
 document.addEventListener("DOMContentLoaded", function(){
-    // Search Button
-    const searchBtn = document.getElementById("searchButton");
-    // Button for input form
-    const addButton = document.getElementById("addButton");
-    // Section where input form is created
-    const formArea = document.getElementById("addForm");
-    // Section where tasks are displayed
-    const taskShowArea = document.getElementById("taskShowArea");
-    // Counter for ID creation
-    let count = 1;
-    // array to store tasks
-    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    // 🔹 Select important elements
+    const searchBtn = document.getElementById("searchButton");   // Search button
+    const addButton = document.getElementById("addButton");      // Add button to open form
+    const formArea = document.getElementById("addForm");         // Area where new-task form will appear
+    const taskShowArea = document.getElementById("taskShowArea");// Area where tasks are displayed
 
+    let count = 1;                                               // Counter (not currently used for ID)
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || []; // Load tasks from localStorage (or empty array)
 
-    // iterate through each element
+    // 🔹 Render all stored tasks when page first loads
     tasks.forEach(task => renderTask(task));
 
-    // search
+    // ───────────────────────────────
+    // SEARCH FEATURE
+    // ───────────────────────────────
     document.getElementById("searchForm").addEventListener("submit", function(e) {
-        e.preventDefault();
+        e.preventDefault(); // Prevent default page reload
     });
+
     searchBtn.addEventListener('click', function(){
-        // arra for search
-        let searchTasks = [];
+        let searchTasks = []; // Stores matched tasks
         let searchValue = String(document.getElementById("searchBar").value).trim();
+
+        // Loop through all tasks and find matches
         tasks.forEach(task => {
-            if(String(task.id).includes(searchValue))
-            {
+            if (String(task.id).includes(searchValue)) {
                 searchTasks.push(task);
                 console.log(`Matched item: ${task.id}`);
             }
-            else if(String(task.name).includes(searchValue))
-            {
+            else if (String(task.name).includes(searchValue)) {
                 searchTasks.push(task);
                 console.log(`Matched item: ${task.name}`);
             }
-            else if(String(task.description).includes(searchValue))
-            {
+            else if (String(task.description).includes(searchValue)) {
                 searchTasks.push(task);
                 console.log(`Matched item: ${task.description}`);
             }
-            // else if(String(task.completed).includes(searchTasks))
-            // {
-            //     searchTasks.push(task);
-            //     console.log(`Matched item: ${task.completed}`);
-            // }
         });
-        taskShowArea.innerHTML = ""; // clear previous results
+
+        // Clear previous tasks & display only search results
+        taskShowArea.innerHTML = "";
         searchTasks.forEach(task => renderTask(task));
     });
 
-    // when Add button gets clicked
+    // ───────────────────────────────
+    // ADD NEW TASK (OPEN FORM)
+    // ───────────────────────────────
     addButton.addEventListener("click", function(){
-
         taskShowArea.style.marginTop = "0px";
-        
-        // Disabling Add Button
-        addButton.disabled = true;
+        addButton.disabled = true;  // Prevent opening multiple forms
 
-        // Creating Input Form--------------------
-
-        // Create task container
+        // Create container for the form
         const taskContainer = document.createElement('div');
         taskContainer.id = "addNewItem";
-
         taskContainer.style.marginTop = "80px";
 
-        // Create left icon or checkbox
+        // Left icon/checkbox placeholder
         const taskIcon = document.createElement('div');
-        taskIcon.textContent = 'O'; // or use a checkbox later
-
-        // Append left icon to Task Container
+        taskIcon.textContent = 'O'; 
         taskContainer.appendChild(taskIcon);
 
-        // Create form
+        // Create actual form
         const form = document.createElement('form');
         form.setAttribute('action', '/addNewForm');
         form.id = 'addNewItemForm';
 
-        // Name
+        // Task name input
         const inputName = document.createElement('input');
         inputName.id = 'taskName';
         inputName.type = 'text';
         inputName.placeholder = 'Name';
 
-        // Separator
-        const hr = document.createElement('hr');
-
-        // Description box
-        const descAndButtons = document.createElement('div');
-        descAndButtons.className = 'descriptionRow'; // new wrapper
-
-        // Description input
+        // Task description input
         const inputDesc = document.createElement('input');
         inputDesc.id = 'taskDescription';
         inputDesc.type = 'text';
         inputDesc.placeholder = 'Description...';
-        
+
+        // Wrapper for Create + Cancel buttons
+        const descAndButtons = document.createElement('div');
+        descAndButtons.className = 'descriptionRow';
 
         // Create button
         const createBtn = document.createElement('button');
@@ -107,217 +90,194 @@ document.addEventListener("DOMContentLoaded", function(){
 
         // Cancel button
         const cancelBtn = document.createElement('button');
-        cancelBtn.type = "button"; // changed from submit
+        cancelBtn.type = "button";
         cancelBtn.id = "cancelButton";
         cancelBtn.textContent = "Cancel";
-        
-
-        // Append Name to Form
-        form.appendChild(inputName);
-
-        // Append Description input to Form
-        form.appendChild(inputDesc);
-
-        // Append Create Button
-        descAndButtons.appendChild(createBtn);
-
-        // Append Cancel Button
         descAndButtons.appendChild(cancelBtn);
 
-        // Append Description to form
+        // Append inputs and buttons into form
+        form.appendChild(inputName);
+        form.appendChild(inputDesc);
         form.appendChild(descAndButtons);
 
-        // Append form to task container
+        // Append form to container → container to formArea
         taskContainer.appendChild(form);
-
-        // Append whole task container to Add Form section
         formArea.appendChild(taskContainer);
 
-        // Form Submit Button
+        // ───── Handle Create (form submit)
         form.addEventListener("submit", function(event){
             event.preventDefault();
-            // if the list is empty
-            if(inputName.value === "")
-            {
-                    addButton.disabled = false;
-                    taskContainer.remove();
+            if(inputName.value === "") {
+                // If no name, just remove form
+                addButton.disabled = false;
+                taskContainer.remove();
             }
-            else
-            {
+            else {
                 addButton.disabled = false;
 
+                // Create new task object
                 const data = {
-                    id : Date.now(),
+                    id : Date.now(),             // unique ID using timestamp
                     name : inputName.value,
                     description : inputDesc.value,
                     completed : false
                 };
-        
-                // storing collected data in the Task list
-                tasks.push(data)
 
-                // Storing task in LocalStorage
+                // Add to array + save
+                tasks.push(data);
                 saveTasks();
+
+                // Render on screen
                 renderTask(data);
-                
+
+                // Remove the form after submission
                 taskContainer.remove();
             }
         });
 
-        // Form Cancel Button 
+        // ───── Handle Cancel
         cancelBtn.addEventListener("click", function(){
-        addButton.disabled = false;
-
-        taskContainer.remove();
+            addButton.disabled = false;
+            taskContainer.remove();
         });
-    })
+    });
 
-    
-
+    // ───────────────────────────────
+    // RENDER TASK FUNCTION
+    // ───────────────────────────────
     function renderTask(data){
-
-        console.log(data);
-        
-        // Create formatted task display
         const display = document.createElement("div");
         display.classList.add("taskDisplay");
-        
-        // First Row
+
+        // Header row (ID + Name)
         const header = document.createElement("div");
         header.classList.add("header");
+        // Shorten the timestamp ID
         let ID = data.id - (Math.floor(data.id/1000000000)*1000000000);
         header.innerHTML = `<span>ID: ${ID}</span><span>${data.name}</span>`;
-        
-        // Seperator
+
+        // Separator line
         const separator = document.createElement("div");
         separator.classList.add("separator");
-        
-        // Second Row
+
+        // Description row
         const description = document.createElement("div");
-        description.id = "showTaskDescription"
-        const label = document.createElement("label");
-        label.setAttribute("for", "description");
+        description.id = "showTaskDescription";
         description.classList.add("description");
         description.textContent = `Description: ${data.description}`;
 
+        // Edit & Delete buttons
         const del = document.createElement('button');
         del.id = "deleteBtn";
         del.type = "button";
         del.textContent = "Delete";
-        
+
         const edit = document.createElement('button');
         edit.id = "editBtn";
         edit.type = "button";
         edit.textContent = "Edit";
 
+        // Button wrapper
         const btns = document.createElement('div');
-        btns.id = "btns"
-        
-        // Append elements to taskShowArea
-        display.appendChild(header);
-        display.appendChild(separator);
+        btns.id = "btns";
         btns.appendChild(edit);
         btns.appendChild(del);
+
+        // Assemble task
+        display.appendChild(header);
+        display.appendChild(separator);
         display.appendChild(description);
         display.appendChild(btns);
         taskShowArea.appendChild(display);
 
+        // ───── Toggle Completed on Click
         display.addEventListener('click', (e)=>{
-            if(e.target.tagName === "BUTTON") return;
+            if(e.target.tagName === "BUTTON") return; // Ignore button clicks
             data.completed = !data.completed;
             display.classList.toggle("completed");
             saveTasks();
-        })
+        });
 
-        // Code of Delete Button
-        display.querySelector("#deleteBtn").addEventListener("click", (e)=>{
-            e.stopPropagation()     // prevent toggle from firing
-            tasks = tasks.filter(t => t.id !== data.id);
-            display.remove();
+        // ───── Delete Task
+        del.addEventListener("click", (e)=>{
+            e.stopPropagation(); // Prevent toggle
+            tasks = tasks.filter(t => t.id !== data.id); // Remove from array
+            display.remove();                            // Remove from UI
             saveTasks();
-        })
+        });
 
-        // Inside renderTask(data), after creating the edit button:
+        // ───── Edit Task
         edit.addEventListener("click", function(e) {
-            e.stopPropagation(); // Prevent toggling completed state
+            e.stopPropagation(); // Prevent toggle
 
-            // Create an edit form
+            // Create edit form
             const editForm = document.createElement("form");
             editForm.id = "editForm";
-            // editForm.className = "editForm";
 
-            // Container for first row
+            // First row (name + desc)
             const editFormFirstRow = document.createElement('div');
             editFormFirstRow.id = "editFormFirstRow";
 
-            // Name input
             const editName = document.createElement("input");
             editName.id = "editFormName";
             editName.type = "text";
             editName.value = data.name;
 
-            // Description input
             const editDesc = document.createElement("input");
             editDesc.id = "editFormDesc";
             editDesc.type = "text";
             editDesc.value = data.description;
 
-            // Container for first row
+            editFormFirstRow.appendChild(editName);
+            editFormFirstRow.appendChild(editDesc);
+
+            // Second row (buttons)
             const editFormSecondRow = document.createElement('div');
             editFormSecondRow.id = "editFormSecondRow";
 
-            // Save button
             const saveBtn = document.createElement("button");
             saveBtn.id = "editFormSaveBtn";
             saveBtn.type = "submit";
             saveBtn.textContent = "Save";
 
-            // Cancel button
             const cancelBtn = document.createElement("button");
             cancelBtn.id = "editFormCancelBtn";
             cancelBtn.type = "button";
             cancelBtn.textContent = "Cancel";
 
-
-
-            // Append inputs and buttons to containers
-            editFormFirstRow.appendChild(editName);
-            editFormFirstRow.appendChild(editDesc);
-            editForm.appendChild(editFormFirstRow);
-            // editForm.appendChild(editDesc);
             editFormSecondRow.appendChild(saveBtn);
             editFormSecondRow.appendChild(cancelBtn);
-            editForm.appendChild(editFormSecondRow);
-            // editForm.appendChild(cancelBtn);
 
-            // Replace the display with the edit form
+            // Put everything inside editForm
+            editForm.appendChild(editFormFirstRow);
+            editForm.appendChild(editFormSecondRow);
+
+            // Replace task display with edit form
             display.innerHTML = "";
             display.appendChild(editForm);
 
-            // Save changes
+            // ───── Save edited task
             editForm.addEventListener("submit", function(ev) {
                 ev.preventDefault();
                 data.name = editName.value;
                 data.description = editDesc.value;
                 saveTasks();
-                // display.innerHTML = ""; // Clear and re-render
-                display.remove();
-                renderTask(data);
+                display.remove();   // Remove old view
+                renderTask(data);   // Re-render with updated values
             });
 
-            // Cancel editing
+            // ───── Cancel edit
             cancelBtn.addEventListener("click", function() {
-                // display.innerHTML = "";
                 display.remove();
                 renderTask(data);
             });
         });
     }
 
-    function saveTasks()
-    {
-        localStorage.setItem("tasks", JSON.stringify(tasks))
+    // ───────────────────────────────
+    // SAVE TO LOCAL STORAGE
+    // ───────────────────────────────
+    function saveTasks() {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
     }
 });
-
-
