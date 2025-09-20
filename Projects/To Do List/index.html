@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+
+<body>
+    <!-- Section for Searching and Adding tasks -->
+    <section id="options">
+        <!-- Form for searching an element -->
+        <form action="/search" id="searchForm">
+            <!-- Input -->
+            <input type="search" id="searchBar" placeholder="Search">
+            <!-- Button for search -->
+            <button id="searchButton"><img src="./search.png" alt=""></button>
+        </form>
+
+        <!-- Add button to add task -->
+        <button id="addButton"><img src="./add.png" alt=""></button>
+        <!-- Options button -->
+        <!-- <button id="optionButton"><img src="./option.png" alt=""></button> -->
+    </section>
+
+    <!-- Section where input form is created -->
+    <section id="addForm"></section>
+    
+    <!-- Section where tasks are shown -->
+    <section id="taskSection">
+        <!-- Tasks are shown in this -->
+        <div id="taskShowArea">
+
+        </div>
+    
+    </section>
+
+
+    <script defer src="script2.js"></script>
+</body>
+</html>
